@@ -1,57 +1,91 @@
+/* 基础样式设置 */
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "黑体", "SimHei", sans-serif;  /* 设置黑体字体 */
+    background-color: #1a1a1a;  /* 深色背景 */
+    color: white;  /* 白色文字 */
 }
 
+/* 顶部导航栏样式 */
 header {
-    background-color: #333;
+    background-color: #2c2c2c;  /* 深灰色背景 */
     padding: 1rem;
 }
 
+/* 导航菜单列表样式 */
 nav ul {
-    list-style: none;
+    list-style: none;  /* 移除列表点 */
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
+    display: flex;  /* 弹性布局 */
+    justify-content: center;  /* 居中对齐 */
 }
 
+/* 导航菜单项样式 */
 nav li {
-    margin: 0 1rem;
+    margin: 0 1rem;  /* 左右间距 */
 }
 
+/* 导航链接样式 */
 nav a {
-    color: white;
-    text-decoration: none;
+    color: white;  /* 白色文字 */
+    text-decoration: none;  /* 移除下划线 */
 }
 
+/* 主要内容区域样式 */
 main {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px;  /* 最大宽度 */
+    margin: 0 auto;  /* 居中显示 */
     padding: 2rem;
 }
 
+/* 内容区块样式 */
 section {
-    margin-bottom: 3rem;
+    margin-bottom: 3rem;  /* 底部间距 */
     padding: 2rem;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;  /* 圆角边框 */
+    background-color: #2c2c2c;  /* 深灰色背景 */
+    box-shadow: 0 2px 4px rgba(255,255,255,0.1);  /* 白色阴影效果 */
 }
 
+/* 标题样式 */
 h1, h2 {
-    color: #333;
+    color: white;  /* 白色文字 */
 }
 
+/* 主标题样式 */
 h1 {
-    color: #2c3e50;
-    font-size: 2.5rem;
-    text-align: center;
+    color: white;
+    font-size: 2.5rem;  /* 字体大小 */
+    text-align: center;  /* 居中对齐 */
     margin-bottom: 1.5rem;
 }
 
+/* 导航链接悬停效果 */
 nav a:hover {
-    color: #3498db;
-    transition: color 0.3s ease;
+    color: #3498db;  /* 蓝色高亮 */
+    transition: color 0.3s ease;  /* 颜色渐变效果 */
 }
+
+/* 头像容器样式 */
+.avatar {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* 头像图片样式 */
+.avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;  /* 圆形头像 */
+    border: 3px solid #3498db;  /* 蓝色边框 */
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);  /* 发光效果 */
+}
+
+/* 段落文字样式 */
+p {
+    color: #e0e0e0;  /* 浅灰色文字 */
+    line-height: 1.6;  /* 行高 */
+}
+  
