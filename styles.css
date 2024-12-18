@@ -76,16 +76,65 @@ nav a:hover {
 
 /* 头像图片样式 */
 .avatar img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;  /* 圆形头像 */
+    width: 180px;  /* 可以调整大小 */
+    height: 180px;
+    border-radius: 50%;  /* 保持圆形 */
     border: 3px solid #3498db;  /* 蓝色边框 */
     box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);  /* 发光效果 */
+    background: #2c2c2c;  /* 深色背景，配合logo */
 }
 
 /* 段落文字样式 */
 p {
     color: #e0e0e0;  /* 浅灰色文字 */
     line-height: 1.6;  /* 行高 */
+}
+
+/* 文档下载区域样式 */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.login-form input {
+    padding: 0.5rem;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.login-form button,
+.pdf-item button {
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover,
+.pdf-item button:hover {
+    background-color: #2980b9;
+}
+
+.pdf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+}
+
+#download-links {
+    margin-top: 2rem;
 }
   
