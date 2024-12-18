@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>SSY - 技术文档下载</title>
+    <!-- 引入样式表 -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- 页面头部导航 -->
     <header>
         <nav>
             <ul>
@@ -16,48 +18,100 @@
     </header>
 
     <main>
+        <!-- 首页部分 -->
         <section id="home">
+            <!-- 头像容器 -->
             <div class="avatar">
-                <img src="SSY Logo.jpg" alt="SSY Logo">
+                <img src="avatar.jpg" alt="SSY Logo" loading="lazy">
             </div>
             <h1>SSY Technical Documents</h1>
             <p>欢迎访问技术文档下载页面</p>
         </section>
         
+        <!-- 文档下载部分 -->
         <section id="documents">
             <h2>文档下载</h2>
+            <!-- 登录表单 -->
             <div class="login-form">
-                <input type="text" id="username" placeholder="请输入用户名">
-                <input type="password" id="password" placeholder="请输入密码">
-                <button onclick="verifyAndDownload()">获取下载链接</button>
+                <input type="text" id="username" placeholder="请输入用户名" autocomplete="username" required>
+                <input type="password" id="password" placeholder="请输入密码" autocomplete="current-password" required>
+                <button id="loginBtn" onclick="verifyAndDownload()">获取下载链接</button>
+                <!-- 错误信息显示区域 -->
+                <div id="error-message" class="error" style="display: none; color: red; margin-top: 10px;"></div>
             </div>
+            <!-- PDF下载链接区域 -->
             <div id="download-links" style="display: none;">
                 <div class="pdf-item">
-                    <span>241003-1电气原理图.pdf</span>
-                    <button onclick="downloadPDF('241003-1.pdf')">下载</button>
+                    <span class="pdf-name">241003-1电气原理图.pdf</span>
+                    <button class="download-btn" onclick="downloadPDF('241003-1.pdf')">下载</button>
                 </div>
                 <div class="pdf-item">
-                    <span>241003-1操作维护说明书.pdf</span>
-                    <button onclick="downloadPDF('241003-1操作维护说明书.pdf')">下载</button>
+                    <span class="pdf-name">241003-1操作维护说明书.pdf</span>
+                    <button class="download-btn" onclick="downloadPDF('241003-1操作维护说明书.pdf')">下载</button>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加回车键监听，按回车时触发登录
+            document.getElementById('password').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    verifyAndDownload();
+                }
+            });
+        });
+
+        // 验证用户名密码并显示下载链接
         function verifyAndDownload() {
-            const username = document.getElementById('username').value;
+            // 获取输入的用户名和密码
+            const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error-message');
+            const loginBtn = document.getElementById('loginBtn');
             
-            if (username === 'admin' && password === '241003') {
-                document.getElementById('download-links').style.display = 'block';
-            } else {
-                alert('用户名或密码错误！');
+            // 禁用登录按钮，防止重复点击
+            loginBtn.disabled = true;
+            
+            // 验证输入是否为空
+            if (!username || !password) {
+                showError('用户名和密码不能为空！');
+                loginBtn.disabled = false;
+                return;
             }
+
+            // 验证用户名密码是否正确
+            if (username === 'admin' && password === '241003') {
+                errorDiv.style.display = 'none';
+                document.getElementById('download-links').style.display = 'block';
+                document.getElementById('password').value = ''; // 清空密码输入框
+            } else {
+                showError('用户名或密码错误！');
+            }
+            
+            // 重新启用登录按钮
+            loginBtn.disabled = false;
         }
 
+        // 显示错误信息
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // 下载PDF文件
         function downloadPDF(filename) {
-            window.location.href = 'docs/' + filename;
+            // 验证文件名格式（允许中文、字母、数字、横线和点）
+            if (!/^[\w\u4e00-\u9fa5\-\.]+\.pdf$/.test(filename)) {
+                showError('无效的文件名！');
+                return;
+            }
+            
+            // 跳转到PDF文件地址
+            window.location.href = 'docs/' + encodeURIComponent(filename);
         }
     </script>
 </body>
