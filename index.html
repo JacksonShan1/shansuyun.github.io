@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Shan JOB - 个人网站</title>
+    <!-- 链接到样式表 -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- 顶部导航栏 -->
     <header>
         <nav>
             <ul>
@@ -13,29 +15,80 @@
                 <li><a href="#about">关于我</a></li>
                 <li><a href="#portfolio">作品集</a></li>
                 <li><a href="#contact">联系方式</a></li>
+                <li><a href="#documents">文档下载</a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- 主要内容区域 -->
     <main>
+        <!-- 首页区块 -->
         <section id="home">
+            <!-- 头像区域 -->
+            <div class="avatar">
+                <img src="avatar.jpg" alt="SSY Logo">
+            </div>
             <h1>Welcome to Shan JOB</h1>
             <p>你好！欢迎来到我的个人空间</p>
         </section>
         
+        <!-- 关于我区块 -->
         <section id="about">
             <h2>关于我</h2>
             <p>这里是关于我的介绍...</p>
         </section>
         
+        <!-- 作品集区块 -->
         <section id="portfolio">
             <h2>我的作品集</h2>
             <p>这里展示我的项目和作品...</p>
         </section>
         
+        <!-- 联系方式区块 -->
         <section id="contact">
             <h2>联系我</h2>
             <p>邮箱：your.email@example.com</p>
         </section>
+        
+        <!-- 新增文档下载区块 -->
+        <section id="documents">
+            <h2>文档下载</h2>
+            <div class="login-form">
+                <input type="text" id="username" placeholder="请输入用户名">
+                <input type="password" id="password" placeholder="请输入密码">
+                <button onclick="verifyAndDownload()">获取下载链接</button>
+            </div>
+            <div id="download-links" style="display: none;">
+                <div class="pdf-item">
+                    <span>文档1.pdf</span>
+                    <button onclick="downloadPDF('doc1.pdf')">下载</button>
+                </div>
+                <div class="pdf-item">
+                    <span>文档2.pdf</span>
+                    <button onclick="downloadPDF('doc2.pdf')">下载</button>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- 添加JavaScript -->
+    <script>
+        function verifyAndDownload() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // 这里设置验证的用户名和密码
+            if (username === 'admin' && password === '241003') {
+                document.getElementById('download-links').style.display = 'block';
+            } else {
+                alert('用户名或密码错误！');
+            }
+        }
+
+        function downloadPDF(filename) {
+            // 这里替换为实际的PDF文件路径
+            window.location.href = 'pdfs/' + filename;
+        }
+    </script>
 </body>
-</html>
+</html> 
